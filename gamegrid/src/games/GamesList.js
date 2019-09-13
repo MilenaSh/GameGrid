@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import GamesData from '../data/grid-app-data.json';
 import {Row, Col, Image} from 'react-bootstrap';
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import LoaderImage from '../images/loader.gif';
+import '../styles/Games.css';
 
 class GamesList extends Component {
 
@@ -16,11 +18,11 @@ class GamesList extends Component {
 }
 
 const GameGridHome = ({match}) => (
-    <div className="App">
-        <h1>Category Title</h1>
-        <Row>
+    <div className="GamesList">
+        <div className="Header">Category Title</div>
+        <Row className>
             <Col lg={4} className={"mainGame"}>
-                <Link to={`/game/${GamesData.categories[0].games[0].id}`}>
+                <Link className={"thumbnail"} to={`/game/${GamesData.categories[0].games[0].id}`}>
                     <div className="menu-item-wrapper">
                         <Image src={GamesData.categories[0].games[0].thumb} fluid/>
                         <div>{GamesData.categories[0].games[0].name}</div>
@@ -35,7 +37,7 @@ const GameGridHome = ({match}) => (
                         .map((gameDetail, index) => {
                             if (index !== 0) {
                                 return <Col lg={4}>
-                                    <Link to={`/game/${gameDetail.id}`}>
+                                    <Link className={"thumbnail"} to={`/game/${gameDetail.id}`}>
                                         <div className="menu-item-wrapper">
                                             <Image src={gameDetail.thumb} fluid/>
                                             <div>{gameDetail.name}</div>
@@ -52,15 +54,19 @@ const GameGridHome = ({match}) => (
 )
 
 const GameActive = ({match}) => (
-    <div className="game-active">
+    <div className="GameActive">
         <Row>
-            <Col lg={10}></Col>
+            <Col lg={10}>
+                <div className="loader-wrapper">
+                <Image  src={LoaderImage}/>
+                </div>
+            </Col>
             <Col lg={2}>
                 <Image
                     src={GamesData.categories[0].games[`${match.params.gameDetailId}`].thumb}
                     fluid/>
-                <div>{GamesData.categories[0].games[`${match.params.gameDetailId}`].name}</div>
-                <div>{GamesData.categories[0].games[`${match.params.gameDetailId}`].description}</div>
+                <div className="header">{GamesData.categories[0].games[`${match.params.gameDetailId}`].name}</div>
+                <div className="description">{GamesData.categories[0].games[`${match.params.gameDetailId}`].description}</div>
             </Col>
         </Row>
 
