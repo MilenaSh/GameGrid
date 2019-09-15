@@ -12,6 +12,7 @@ class GamesList extends Component {
             <Router>
                 <Route path="/game/:gameDetailId" component={GameActive}/>
                 <Route exact={true} path="/" component={GameGridHome}/>
+                <Route exact={true} path="#" component={GameGridHome}/>
             </Router>
         );
     }
@@ -21,7 +22,7 @@ const GameGridHome = ({match}) => (
     <div className="GamesList">
         <div className="Header">Category Title</div>
         <Row className>
-            <Col lg={4} className={"mainGame"}>
+            <Col xl={4} lg={4} md={4} sm={4} xs={6} className={"mainGame"}>
                 <Link className={"thumbnail"} to={`/game/${GamesData.categories[0].games[0].id}`}>
                     <div className="menu-item-wrapper">
                         <Image src={GamesData.categories[0].games[0].thumb} fluid/>
@@ -29,14 +30,14 @@ const GameGridHome = ({match}) => (
                     </div>
                 </Link>
             </Col>
-            <Col lg={8}>
+            <Col xl={8} lg={8} md={8} sm={8} xs={6}>
                 <Row>
                     {GamesData
                         .categories[0]
                         .games
                         .map((gameDetail, index) => {
                             if (index !== 0) {
-                                return <Col lg={4}>
+                                return <Col xl={4} lg={4} md={4} sm={6} xs={12}>
                                     <Link className={"thumbnail"} to={`/game/${gameDetail.id}`}>
                                         <div className="menu-item-wrapper">
                                             <Image src={gameDetail.thumb} fluid/>
@@ -56,17 +57,18 @@ const GameGridHome = ({match}) => (
 const GameActive = ({match}) => (
     <div className="GameActive">
         <Row>
-            <Col lg={10}>
+            <Col xl={10} lg={10} md={9} sm={9} xs={12}>
                 <div className="loader-wrapper">
                 <Image  src={LoaderImage}/>
                 </div>
             </Col>
-            <Col lg={2}>
+            <Col xl={2} lg={2} md={3} sm={3} xs={12}>
                 <Image
-                    src={GamesData.categories[0].games[`${match.params.gameDetailId}`].thumb}
+                     src={GamesData.categories[0].games[`${match.params.gameDetailId - 1}`].thumb}
                     fluid/>
-                <div className="header">{GamesData.categories[0].games[`${match.params.gameDetailId}`].name}</div>
-                <div className="description">{GamesData.categories[0].games[`${match.params.gameDetailId}`].description}</div>
+                     <div className="header">{match.params.id}</div>
+                <div className="header">{GamesData.categories[0].games[`${match.params.gameDetailId - 1}`].name}</div>
+                <div className="description">{GamesData.categories[0].games[`${match.params.gameDetailId -1}`].description}</div>
             </Col>
         </Row>
 
