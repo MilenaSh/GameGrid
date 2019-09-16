@@ -23,7 +23,9 @@ const GameGridHome = ({match}) => (
         <div className="Header">Category Title</div>
         <Row className>
             <Col xl={4} lg={4} md={4} sm={4} xs={6} className={"mainGame"}>
-                <Link className={"thumbnail"} to={`/game/${GamesData.categories[0].games[0].id}`}>
+                <Link
+                    className={"thumbnail"}
+                    to={`/game/${GamesData.categories[0].games[0].id}`}>
                     <div className="menu-item-wrapper">
                         <Image src={GamesData.categories[0].games[0].thumb} fluid/>
                         <div>{GamesData.categories[0].games[0].name}</div>
@@ -56,22 +58,28 @@ const GameGridHome = ({match}) => (
 
 const GameActive = ({match}) => (
     <div className="GameActive">
+
         <Row>
             <Col xl={10} lg={10} md={9} sm={9} xs={12}>
                 <div className="loader-wrapper">
-                <Image  src={LoaderImage}/>
+                    <Image src={LoaderImage}/>
                 </div>
             </Col>
-            <Col xl={2} lg={2} md={3} sm={3} xs={12}>
-                <Image
-                     src={GamesData.categories[0].games[`${match.params.gameDetailId - 1}`].thumb}
-                    fluid/>
-                     <div className="header">{match.params.id}</div>
-                <div className="header">{GamesData.categories[0].games[`${match.params.gameDetailId - 1}`].name}</div>
-                <div className="description">{GamesData.categories[0].games[`${match.params.gameDetailId -1}`].description}</div>
-            </Col>
-        </Row>
+            {GamesData
+                .categories[0]
+                .games
+                .map((gameDetail, index) => {
+                    if (gameDetail.id == `${match.params.gameDetailId}`) {
+                        return <Col xl={2} lg={2} md={3} sm={3} xs={12}>
+                            <Image src={gameDetail.thumb} fluid/>
+                            <div className="header">{gameDetail.name}</div>
+                            <div className="description">{gameDetail.description}</div>
+                        </Col>
 
+                    }
+                })
+}
+        </Row>
     </div>
 )
 

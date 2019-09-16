@@ -2,7 +2,8 @@ body {
     min-height: 100%;
 }
 
-.GamesList, .GameActive {
+.GameActive,
+.GamesList {
     height: 100%;
     padding: 5%;
     font-size: 10px;
@@ -12,12 +13,13 @@ body {
     line-height: 2em;
 }
 
-.GamesList a, .GameActive a{
+.GameActive a,
+.GamesList a {
     color: #f0f7f7;
     text-decoration: none;
 }
-
-.GamesList a:hover, .GameActive a:hover{
+.GameActive a:hover,
+.GamesList a:hover {
     color: #f0f7f7;
     text-decoration: none;
     font-weight: 600;
@@ -29,30 +31,30 @@ body {
     color: #345753;
 }
 
-.GamesList .thumbnail{
+.GamesList .thumbnail {
     display: block;
-    padding: 3% 3%;
+    padding: 3%;
     margin: 3%;
     background-color: #46a69c;
     font-size: 1.6em;
     border-radius: 3px;
 }
 
-.GamesList .mainGame .thumbnail{
+.GamesList .mainGame .thumbnail {
     padding: 10% 5%;
 }
 
-.GamesList .mainGame .thumbnail div{
+.GamesList .mainGame .thumbnail div {
     font-size: 1em;
-    margin-top: .5em;   
+    margin-top: 0.5em;
     font-weight: 600;
 }
 
-.GamesList .thumbnail img{
+.GamesList .thumbnail img {
     border-radius: 3px;
 }
 
-.GamesList .Header{
+.GamesList .Header {
     width: 75%;
     margin: auto;
     min-height: 1em;
@@ -62,47 +64,41 @@ body {
     border-bottom: 2px solid #345753;
 }
 
-.GamesList .menu-item-wrapper.thumbnail{
+.GamesList .menu-item-wrapper.thumbnail {
     height: 100%;
     padding: 2% 3%;
 }
-
-.GamesList .row >div:nth-of-type(1) img{
+.GamesList .row > div:nth-of-type(1) img {
     height: 100%;
+    width: 100%;
 }
 
 .GameActive .row {
     height: 100%;
     min-height: 30vh;
 }
-.GameActive .row >div:nth-of-type(1) {
+.GameActive .row > div:nth-of-type(1) {
     padding: 3% 5%;
     min-height: 25em;
     background-color: #345753;
 }
-
-.GameActive .row >div:nth-of-type(2) {
+.GameActive .row > div:nth-of-type(2) {
     padding: 2%;
     background-color: #46a69c;
 }
-
-.GameActive .row >div:nth-of-type(2) img {
+.GameActive .row > div:nth-of-type(2) img {
     border-radius: 50%;
     display: block;
 }
-
-.GameActive .row >div:nth-of-type(2) .header {
+.GameActive .row > div:nth-of-type(2) .header {
     font-size: 2em;
     font-weight: 600;
     margin: 1.5em 1em;
 }
-
-.GameActive .row >div:nth-of-type(2) .description {
-    font-size: 1.3em;
-
-font-weight: 400;
-
-line-height: 1.2em;
+.GameActive .row > div:nth-of-type(2) .description {
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 1.6em;
 }
 
 .loader-wrapper {
@@ -122,25 +118,31 @@ line-height: 1.2em;
 }
 
 /*Responsive*/
-
 @media (max-width: 1500px) {
-    .GamesList, .GameActive {
-   
-    }
+    .GameActive,
+    .GamesList {
+        font-size: 9px;
+        }
 }
-
+@media (max-width: 1000px) {
+    .GameActive,
+    .GamesList {
+        font-size: 8px;
+        }
+}
 @media (max-width: 768px) {
-    .GamesList, .GameActive {
+    .GameActive,
+    .GamesList {
         font-size: 7px;
     }
 
     .GamesList .Header {
-        width: 95%;    
+        width: 95%;
     }
 
     .img-fluid {
         max-width: 50%;
         margin: auto;
-        height: auto;   
+        height: auto;
     }
 }
